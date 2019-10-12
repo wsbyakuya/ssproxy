@@ -49,11 +49,12 @@ func execute(name string, args []string) error {
 	}
 
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	go func() {
 		io.Copy(os.Stdout, cmdStdout)
 		wg.Done()
 	}()
+	wg.Add(1)
 	go func() {
 		io.Copy(os.Stderr, cmdStderr)
 		wg.Done()
