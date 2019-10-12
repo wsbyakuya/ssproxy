@@ -49,6 +49,7 @@ func execute(name string, args []string) error {
 	}
 
 	wg := sync.WaitGroup{}
+	wg.Add(2)
 	go func() {
 		io.Copy(os.Stdout, cmdStdout)
 		wg.Done()
